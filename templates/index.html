@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Movie Recommendation</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Movie Recommendation System</h1>
+
+<form method="POST">
+<input type="text" name="genre" placeholder="Enter Genre">
+<button type="submit">Recommend</button>
+</form>
+
+{% if message %}
+<p class="error">{{message}}</p>
+{% endif %}
+
+{% if movies is not none and not movies.empty %}
+<ul>
+{% for index, movie in movies.iterrows() %}
+<li>{{movie.Title}} (Rating: {{movie.Rating}})</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+</div>
+
+</body>
+</html>
